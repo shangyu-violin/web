@@ -53,6 +53,7 @@
         }
         section {
             margin-bottom: 60px;
+            scroll-margin-top: 100px; /* 避免導覽列遮擋標題 */
         }
         h2 {
             font-size: 22px;
@@ -116,19 +117,14 @@
             margin-bottom: 20px;
         }
 
-        /* 獨白區塊：雙欄並排 */
-        .solo-grid {
+        /* 獨白與和諧區塊：雙欄並排 */
+        .solo-grid, .team-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
             gap: 24px;
-            margin-bottom: 40px;
         }
-        
-        /* 和諧區塊：雙欄並排 */
-        .team-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 24px;
+        .solo-grid {
+            margin-bottom: 40px;
         }
 
         .photo-card {
@@ -141,12 +137,58 @@
             height: auto;
             display: block;
         }
-        .photo-caption {
+        .photo-card .photo-caption {
             font-size: 13px;
             color: #666666;
             text-align: center;
             margin-top: 10px;
             font-style: italic;
+        }
+
+        /* 作品集外跳卡片排版樣式 */
+        .video-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 24px;
+            margin-top: 20px;
+        }
+        .audio-link-card {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            background: #ffffff;
+            border: 1px solid #e6e1da;
+            padding: 24px;
+            text-decoration: none;
+            color: #2c2c2c;
+            transition: all 0.2s ease;
+        }
+        .audio-link-card:hover {
+            border-color: #8b0000;
+            background-color: #fdfcfb;
+            box-shadow: 0 4px 12px rgba(139, 0, 0, 0.05);
+        }
+        .audio-link-card h3 {
+            margin: 0 0 15px 0;
+            font-size: 16px;
+            color: #1a1a1a;
+            letter-spacing: 0.5px;
+        }
+        .play-button-placeholder {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #f7f5f2;
+            border: 1px dashed #d1c9be;
+            height: 120px;
+            color: #8b0000;
+            font-size: 14px;
+            letter-spacing: 1px;
+        }
+        .play-button-placeholder::before {
+            content: "▶";
+            font-size: 18px;
+            margin-right: 8px;
         }
 
         /* 頁尾 */
@@ -159,7 +201,7 @@
             letter-spacing: 1px;
         }
 
-        /* 響應式 RWD */
+        /* 響應式 RWD（手機板優化） */
         @media (max-width: 768px) {
             .profile-container {
                 flex-direction: column;
@@ -169,7 +211,7 @@
                 flex: 0 0 200px;
                 width: 200px;
             }
-            .solo-grid, .team-grid {
+            .video-grid, .solo-grid, .team-grid {
                 grid-template-columns: 1fr;
             }
             .timeline-list li strong {
@@ -188,6 +230,7 @@
             <a href="#bio">簡介</a>
             <a href="#experience">演出經歷</a>
             <a href="#gallery">舞台影像</a>
+            <a href="#portfolio">影音作品</a>
         </nav>
     </header>
 
@@ -199,9 +242,9 @@
                 <div class="profile-image">
                     <img src="li.jpg" alt="小提琴家 李商宇" title="李商宇">
                 </div>
-<div class="profile-text">
-    <p><strong>李商宇</strong>，台灣小提琴家與音樂教育者。曾任國家交響樂團（NSO）、台北愛樂室內樂坊小提琴手。深耕德奧樂派與室內樂，演奏生涯多次參與跨國協奏，曾與馬友友、胡乃元等國際頂尖音樂大師同台演出。</p>
-</div>
+                <div class="profile-text">
+                    <p><strong>李商宇</strong>，台灣小提琴家與音樂教育者。曾任國家交響樂團（NSO）、台北愛樂室內樂坊小提琴手。深耕德奧樂派與室內樂，演奏生涯多次參與跨國協奏，曾與馬友友、胡乃元、林昭亮等國際頂尖音樂大師同台演出。</p>
+                </div>
             </div>
         </section>
 
@@ -217,6 +260,7 @@
                 <li><strong>2008年</strong> 於馬祖南竿、北竿舉辦「愛在七夕音樂會」</li>
                 <li><strong>2009年</strong> 發行現場錄音專輯《BEETHOVEN - VIOLIN SONATA》</li>
                 <li><strong>2010年</strong> 於林建生紀念圖書館演藝廳參與「野薑花男孩親子音樂會」</li>
+                <li><strong>2021年</strong> 參與黑膠會社主題音樂會，與青年演奏者於會社茶館同台演出</li>
                 <li><strong>2024年 冬</strong> 於國家兩廳院演奏廳舉辦《獨白：李商宇2024小提琴獨奏會》</li>
             </ul>
         </section>
@@ -249,7 +293,43 @@
                     <div class="photo-caption">與櫟莊園的對話</div>
                 </div>
             </div>
-            
+        </section>
+
+        <section id="portfolio">
+            <h2>櫟莊園演出-2025/Sep</h2>
+            <div class="video-grid">
+                
+                <a class="audio-link-card" href="https://www.youtube.com/watch?v=oAdzGOglJc8&list=PL1dShbL6unw8kDP27j8Sv067h_yzgNjiK&index=4" target="_blank">
+                    <h3>李商宇-舒曼．夢幻曲</h3>
+                    <div class="play-button-placeholder">點擊前往 YouTube 播放</div>
+                </a>
+
+                <a class="audio-link-card" href="https://www.youtube.com/watch?v=ieLSH86O-hU&list=PL1dShbL6unw8kDP27j8Sv067h_yzgNjiK&index=5" target="_blank">
+                    <h3>李商宇-馬斯奈．泰伊思冥想曲</h3>
+                    <div class="play-button-placeholder">點擊前往 YouTube 播放</div>
+                </a>
+
+                <a class="audio-link-card" href="https://www.youtube.com/watch?v=CKBRbOFEwDc&list=PL1dShbL6unw8kDP27j8Sv067h_yzgNjiK&index=6" target="_blank">
+                    <h3>李商宇-梁祝小提琴協奏曲</h3>
+                    <div class="play-button-placeholder">點擊前往 YouTube 播放</div>
+                </a>
+
+                <a class="audio-link-card" href="https://www.youtube.com/watch?v=YOstuFarlOs&list=PL1dShbL6unw8kDP27j8Sv067h_yzgNjiK&index=7" target="_blank">
+                    <h3>李商宇-韋瓦第-四季-夏</h3>
+                    <div class="play-button-placeholder">點擊前往 YouTube 播放</div>
+                </a>
+
+                <a class="audio-link-card" href="https://www.youtube.com/watch?v=FjXMeapStt4&list=PL1dShbL6unw8kDP27j8Sv067h_yzgNjiK&index=8" target="_blank">
+                    <h3>李商宇-巴哈-D小調第二號組曲第五樂章-夏康</h3>
+                    <div class="play-button-placeholder">點擊前往 YouTube 播放</div>
+                </a>
+
+                <a class="audio-link-card" href="https://www.youtube.com/watch?v=S8i_tVO8c6M&list=PL1dShbL6unw8kDP27j8Sv067h_yzgNjiK&index=9" target="_blank">
+                    <h3>李商宇-思慕的人</h3>
+                    <div class="play-button-placeholder">點擊前往 YouTube 播放</div>
+                </a>
+
+            </div>
         </section>
 
     </div>
